@@ -9,7 +9,30 @@
     <p>
     version <%= package.version %>, published <%= package.description.publication %></p>
     </p>
-
+    <p>
+      <h3>Title</h3>
+      <%= package.description.title %>
+    </p>
+    <p>
+      <h3>Author</h3>
+      <%= package.description.author %>
+    </p>
+    <p>
+      <h3>Authors</h3>
+      <%= package.description.authors %>
+    </p>
+    <p>
+      <h3>Maintainer</h3>
+      <%= package.description.maintainer %>
+    </p>
+    <p>
+      <h3>Maintainers</h3>
+      <%= package.description.maintainers %>
+    </p>
+    <p>
+      <h3>Description</h3>
+      <%= package.description.description %>
+    </p>
   </li>
 <% end %>
 </ul>
