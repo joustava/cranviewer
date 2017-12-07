@@ -37,7 +37,8 @@ class Package < ApplicationRecord
 
     Package.find_each do |package|
       if(package.description.blank?)
-        DescriptionImportJob.perform_now package
+        #DescriptionImportJob.perform_now package
+        PackageArchiveImport.enqueue(package.id)
       end
     end
   end
