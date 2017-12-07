@@ -32,5 +32,7 @@ module Cranviewer
 
     config.cran = config_for(:cran)
 
+    Que.mode = :off
+
   end
 end

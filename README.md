@@ -24,25 +24,19 @@
 
   $ bundle exec rspec
 
-* Cron job
-
-  [Whenever](https://github.com/javan/whenever) is used for dealing with the task scheduling. To install and update the actual cronjob run:
-
-  $ bundle exec whenever --update-crontab
-
-  The scheduling configuration can be found in 'config/schedule.rb'
-
-  $ bundle exec whenever
-
-  Will show the actual cron configuration that would be installed.
-
 * Workers
+
+  -
 
 * Deployment instructions (Heroku)
 
   Install the Heroku Toolbelt `$ brew install heroku/brew/heroku`
   Make sure you're logged in `heroku login`
 
+  First time deployment step `heroku create && heroku run db:migrate`
+
+  Deploy with `$ git push heroku deploy:master`.
+  Initial import of CRAN packages `heroku run cran:import`.
 
 
 ## Todo
@@ -60,3 +54,15 @@
 * [ActiveJob](http://edgeguides.rubyonrails.org/active_job_basics.html)
 * [Que](https://github.com/chanks/que)
 * [Benchmarking](http://guides.rubyonrails.org/v3.2.13/performance_testing.html)
+
+* Cron job (non Heroku environment)
+
+  [Whenever](https://github.com/javan/whenever) can used for dealing with the task scheduling. To install and update the actual cronjob run:
+
+  $ bundle exec whenever --update-crontab
+
+  The scheduling configuration can be found in 'config/schedule.rb'
+
+  $ bundle exec whenever
+
+  Will show the actual cron configuration that would be installed.
