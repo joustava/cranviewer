@@ -29,5 +29,8 @@ module Cranviewer
     config.generators.system_tests = nil
 
     config.generators.javascript_engine = :js
+
+    config.cran = config_for(:cran)
+
   end
 end

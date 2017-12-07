@@ -1,0 +1,10 @@
+<h2><%= @package.name %></h2>
+
+<ul>
+  <% for package in @package.versions %>
+    <li>
+      <%= link_to "Description for version #{package.version}", description_path(package) %>
+      <%= link_to "download", archive_uri(package) %>
+    </li>
+  <% end %>
+</ul>

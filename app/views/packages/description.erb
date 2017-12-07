@@ -1,0 +1,15 @@
+<h2><%= @package.name %></h2>
+
+<ul>
+<% for package in @package.versions %>
+  <li>
+    <p>
+      <%= package.description.attributes %>
+    </p>
+    <p>
+    version <%= package.version %>, published <%= package.description.publication %></p>
+    </p>
+
+  </li>
+<% end %>
+</ul>

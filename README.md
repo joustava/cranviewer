@@ -1,33 +1,62 @@
 # Cranviewer
 
-> [CRAN](https://cran.r-project.org/) package viewer
-
-Things you may want to cover:
-
-* Ruby version => 2.4.1
+> [CRAN](https://cran.r-project.org/) package viewer in Ruby/Rails
+> made with:
+>   Ruby version => 2.4.1
+>   Rails version => 5.1.4
 
 * Configuration
 
-  CRAN_MIRROR:
+  (http://cran.r-project.org)
+  CRAN_MIRROR=https://ftp.gwdg.de/pub/misc/cran
+  CRAN_ARCHIVES=/src/contrib/
+  CRAN_LISTING=PACKAGES
 
 * Database creation
 
   $ bundle exec rake db:create
 
-* Database initialization
+* Database initialisation
 
+  $ bundle exec rake db:migrate
 
-* How to run the test suite
+* Specs
 
   $ bundle exec rspec
 
-* Services (job queues, cache servers, search engines, etc.)
+* Cron job
 
-* Deployment instructions
+  [Whenever](https://github.com/javan/whenever) is used for dealing with the task scheduling. To install and update the actual cronjob run:
 
-* ...
+  $ bundle exec whenever --update-crontab
+
+  The scheduling configuration can be found in 'config/schedule.rb'
+
+  $ bundle exec whenever
+
+  Will show the actual cron configuration that would be installed.
+
+* Workers
+
+* Deployment instructions (Heroku)
+
+  Install the Heroku Toolbelt `$ brew install heroku/brew/heroku`
+  Make sure you're logged in `heroku login`
 
 
-## Details
 
-[PACKAGES](https://cran.r-project.org/src/contrib/PACKAGES)
+## Todo
+
+- [ ] Benchmarking/Performance
+- [ ] Cleanup
+- [ ] Search
+- [ ] Pagination
+- [ ] Logging
+- [ ] Monitoring
+
+## Extra
+
+* [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-devel/R-exts.html)
+* [ActiveJob](http://edgeguides.rubyonrails.org/active_job_basics.html)
+* [Que](https://github.com/chanks/que)
+* [Benchmarking](http://guides.rubyonrails.org/v3.2.13/performance_testing.html)

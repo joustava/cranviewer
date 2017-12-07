@@ -1,0 +1,12 @@
+Package: abc
+Version: 2.1
+Depends: R (>= 2.10), abc.data, nnet, quantreg, MASS, locfit
+License: GPL (>= 3)
+NeedsCompilation: no
+
+Package: abd
+Version: 0.2-8
+Depends: R (>= 3.0), nlme, lattice, grid, mosaic
+Suggests: boot, car, ggplot2, plyr, HH, ICC, vcd, Hmisc
+License: GPL-2
+NeedsCompilation: no

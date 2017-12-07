@@ -1,0 +1,16 @@
+# Cran options
+default: &default
+  mirror: https://ftp.gwdg.de/pub/misc/cran
+  archives: src/contrib
+  packages: PACKAGES
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  <<: *default
+  mirror: <%= "#{Rails.root}/spec/fixtures/files" %>
+  archives: archives

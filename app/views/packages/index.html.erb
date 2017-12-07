@@ -1,0 +1,11 @@
+<h2>Imported CRAN packages</h2>
+<p>Latest version from mirror <%= mirror %></p>
+<p>Total packages <%= @packages.count %></p>
+
+<ul>
+<% for package in @packages %>
+  <li>
+    <%= link_to "#{latest(package)}", package_path(package) %>
+  </li>
+<% end %>
+</ul>
