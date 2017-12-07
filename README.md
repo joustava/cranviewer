@@ -33,7 +33,7 @@
   Install the Heroku Toolbelt `$ brew install heroku/brew/heroku`
   Make sure you're logged in `heroku login`
 
-  First time deployment step `heroku create && heroku run db:migrate`
+  First time deployment steps `heroku create && heroku run db:migrate && heroku addons:create scheduler:standard`
 
   Deploy with `$ git push heroku deploy:master`.
   Initial import of CRAN packages `heroku run cran:import`.
@@ -55,7 +55,7 @@
 * [Que](https://github.com/chanks/que)
 * [Benchmarking](http://guides.rubyonrails.org/v3.2.13/performance_testing.html)
 
-* Cron job (non Heroku environment)
+* Simple Cron job (alternative for non Heroku environment)
 
   [Whenever](https://github.com/javan/whenever) can used for dealing with the task scheduling. To install and update the actual cronjob run:
 

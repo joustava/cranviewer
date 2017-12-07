@@ -4,9 +4,9 @@ class PackageArchiveImport < Que::Job
   # @priority = 10
   # @run_at = proc { 1.minute.from_now }
 
-  def run(package_id, options)
+  def run(package_id, options={})
     # Do stuff.
-    package = Package[package_id]
+    package = Package.find(package_id)
 
     ActiveRecord::Base.transaction do
       # Write any changes you'd like to the database.
