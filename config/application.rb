@@ -29,10 +29,10 @@ module Cranviewer
     config.generators.system_tests = nil
 
     config.generators.javascript_engine = :js
+    config.assets.initialize_on_precompile = false
+
 
     config.cran = config_for(:cran)
-
-    Que.mode = :off
 
   end
 end

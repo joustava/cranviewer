@@ -12,13 +12,11 @@ class Description < ApplicationRecord
 
   def self.import(package)
     attributes = self.extract(package.name, package.version)
-    attributes.each { |k, v|
-      attributes[k] = v.force_encoding("ISO-8859-1").encode("UTF-8") unless v.blank?
-    }
     package.create_description(attributes)
   rescue StandardError => e
-    puts package.name
     pp e
+    puts package.name
+    logger.debug(e)
   end
 
   def self.extract(package, version, packages=ARCHIVES_URI)
@@ -28,14 +26,13 @@ class Description < ApplicationRecord
 
     extract = Gem::Package::TarReader.new(tar)
 
-    desc_file = extract.detect { |file|
-      file.full_name === "#{package}/DESCRIPTION"
+    content = extract.seek("#{package}/DESCRIPTION") { |entry|
+      entry.read
     }
 
-    description = self.parse(desc_file.read)
+    #content.force_encoding("utf-8")
+    description = self.parse(content)
     description[:publication] = description.delete :"date/publication"
-    description[:authors] = description.delete :"authors@r"
-    description[:maintainers] = description.delete :"maintainers@r"
-    description.slice(:author, :authors, :maintainer, :maintainers, :publication, :description, :title, :version)
+    description.slice(:author, :authors, :maintainer, :maintainers, :"publication", :description, :title, :version)
   end
 end

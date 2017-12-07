@@ -13,4 +13,3 @@ production:
 test:
   <<: *default
   mirror: <%= "#{Rails.root}/spec/fixtures/files" %>
-  archives: archives

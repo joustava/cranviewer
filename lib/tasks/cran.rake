@@ -3,7 +3,7 @@ require 'optparse'
 namespace :cran do
   desc "Import current version of all CRAN packages"
   task import: :environment do
-
+    
     options = {}
     parser = OptionParser.new do |opts|
       opts.banner = "Usage: rake cran:import [options]"
@@ -13,8 +13,9 @@ namespace :cran do
 
     args = parser.order!(ARGV) {}
     parser.parse!(args)
-    
+
     begin
+      puts "importing..."
       Package.import(options)
     rescue StandardError => e
       puts e

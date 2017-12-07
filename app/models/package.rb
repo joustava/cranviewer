@@ -38,6 +38,7 @@ class Package < ApplicationRecord
     Package.find_each do |package|
       if(package.description.blank?)
         #DescriptionImportJob.perform_now package
+        logger.info("enqueue #{package.name}")
         PackageArchiveImport.enqueue(package.id)
       end
     end
@@ -48,7 +49,7 @@ class Package < ApplicationRecord
 
 
   def self.fetch(uri)
-    file = Tempfile.new('packages_tmp', encoding: 'UTF-8')
+    file = Tempfile.new('packages_tmp')
     open(uri) do |listing|
       file.write(listing.read)
     end

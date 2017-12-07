@@ -6,12 +6,13 @@ RSpec.describe "rake cran" do
   }
 
   describe ":import" do
-    before {
-      Rake::Task['cran:import'].invoke
-    }
 
     it "imports packages" do
-      expect(Package.count).to eq(50)
+      expect {
+        system("rake cran:import -- --size=1")
+      }
+      .to change { Package.count }.from(0).to(1)
+      .and change { Description.count }.from(0).to(1)
     end
   end
 

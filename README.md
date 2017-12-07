@@ -33,8 +33,9 @@
   Install the Heroku Toolbelt `$ brew install heroku/brew/heroku`
   Make sure you're logged in `heroku login`
 
-  First time deployment steps `heroku create && heroku run db:migrate && heroku addons:create scheduler:standard`
-
+  First time deployment steps `heroku create && git push heroku deploy:master && heroku run rake db:migrate && heroku addons:create scheduler:standard`
+  heroku ps:scale web=1 worker=5
+  
   Deploy with `$ git push heroku deploy:master`.
   Initial import of CRAN packages `heroku run cran:import`.
 

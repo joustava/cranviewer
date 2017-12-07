@@ -30,10 +30,12 @@ RSpec.describe Package, type: :model do
   end
 
   describe ".import" do
-    let(:import) { -> { Package.import(file_fixture("PACKAGES")) } }
-
     it "imports all packages from a cran PACKAGES definition into the db" do
-      expect(import).to change { Package.count }.from(0).to(50)
+      expect {
+        Package.import(uri: file_fixture("src/contrib/PACKAGES"), size: 1)
+      }
+      .to change { Package.count }.from(0).to(1)
+      .and change { Description.count }.from(0).to(1)
     end
   end
 
