@@ -7,13 +7,6 @@ class CreatePackages < ActiveRecord::Migration[5.1]
     end
     add_index :packages, [:name, :version], unique: true
 
-    # create_table :versions do |t|
-    #   t.string :package_name
-    #   t.string :number
-    #   t.timestamps
-    # end
-    # add_foreign_key :versions, :packages, column: :package_name, primary_key: :name
-
     create_table :descriptions do |t|
       t.belongs_to :package, null: false, index: true
       t.string :package_name

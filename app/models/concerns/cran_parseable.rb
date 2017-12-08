@@ -17,11 +17,6 @@ module CranParseable
       self.normalize(records.first)
     end
 
-    def parse_yaml(input)
-      record = YAML.load(input)
-      self.normalize(record)
-    end
-
     def normalize(record)
       ActiveSupport::HashWithIndifferentAccess.new(record.transform_keys(&:downcase))
     end

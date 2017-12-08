@@ -9,11 +9,12 @@ class Package < ApplicationRecord
   validates_length_of :version, :minimum => 1, :allow_blank => false
 
   def versions
-    Package.select("id", "name", "version").where(:name => self.name)
+    Package.select(:id, :name, :version).where(:name => self.name)
   end
 
-  def latest
-    self.versions.last
+  def self.latest
+    latest_ids = Package.group(:name).maximum(:id).values
+    Package.where(id: latest_ids).order(:name)
   end
 
   def self.import(options={})
@@ -37,7 +38,6 @@ class Package < ApplicationRecord
 
     Package.find_each do |package|
       if(package.description.blank?)
-        #DescriptionImportJob.perform_now package
         logger.info("enqueue #{package.name}")
         PackageArchiveImport.enqueue(package.id)
       end
@@ -49,7 +49,7 @@ class Package < ApplicationRecord
 
 
   def self.fetch(uri)
-    file = Tempfile.new('packages_tmp')
+    file = Tempfile.new('cran_packages_tmp')
     open(uri) do |listing|
       file.write(listing.read)
     end

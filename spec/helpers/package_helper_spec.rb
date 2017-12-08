@@ -11,5 +11,11 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe PackageHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "builds link to archive" do
+    package = Package.create(name: "abc", version: "1.2.3")
+    expect(helper.archive_uri(package)).to include("src/contrib/abc_1.2.3.tar.gz")
+  end
+
+
 end

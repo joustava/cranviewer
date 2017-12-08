@@ -2,7 +2,7 @@ class PackagesController < ApplicationController
   helper PackageHelper
 
   def index
-    @packages = Package.all
+    @packages = Package.latest
   end
 
   def show

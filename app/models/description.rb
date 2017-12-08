@@ -14,9 +14,7 @@ class Description < ApplicationRecord
     attributes = self.extract(package.name, package.version)
     package.create_description(attributes)
   rescue StandardError => e
-    pp e
-    puts package.name
-    logger.debug(e)
+    logger.error(e)
   end
 
   def self.extract(package, version, packages=ARCHIVES_URI)
@@ -30,7 +28,7 @@ class Description < ApplicationRecord
       entry.read
     }
 
-    #content.force_encoding("utf-8")
+    content.force_encoding("utf-8")
     description = self.parse(content)
     description[:publication] = description.delete :"date/publication"
     description.slice(:author, :authors, :maintainer, :maintainers, :"publication", :description, :title, :version)

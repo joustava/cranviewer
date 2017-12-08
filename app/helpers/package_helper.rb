@@ -7,8 +7,8 @@ module PackageHelper
     Rails.configuration.cran['archives']
   end
 
-  def latest(package)
-    "#{package.latest.name} - latest #{package.latest.version}"
+  def label(package)
+    "#{package.name} (latest #{package.version})"
   end
 
   def archive_uri(package)

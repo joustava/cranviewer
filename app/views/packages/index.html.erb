@@ -5,7 +5,7 @@
 <ul>
 <% for package in @packages %>
   <li>
-    <%= link_to "#{latest(package)}", package_path(package) %>
+    <%= link_to "#{label(package)}", package_path(package) %>
   </li>
 <% end %>
 </ul>
