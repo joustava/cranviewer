@@ -4,9 +4,6 @@
 <% for package in @package.versions %>
   <li>
     <p>
-      <%= package.description.attributes %>
-    </p>
-    <p>
     version <%= package.version %>, published <%= package.description.publication %></p>
     </p>
     <p>
@@ -25,6 +22,9 @@
       <h3>Description</h3>
       <%= package.description.description %>
     </p>
+    <code>
+      <%= package.description.attributes %>
+    </code>
   </li>
 <% end %>
 </ul>

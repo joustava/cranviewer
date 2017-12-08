@@ -26,7 +26,8 @@
 
 * Workers
 
-  -
+  Sheduled to run once a day. Imports PACKAGE descriptions by running a job for each new
+  package. see ./Procfile for details.
 
 * Deployment instructions (Heroku)
 
@@ -35,7 +36,7 @@
 
   First time deployment steps `heroku create && git push heroku deploy:master && heroku run rake db:migrate && heroku addons:create scheduler:standard`
   heroku ps:scale web=1 worker=5
-  
+
   Deploy with `$ git push heroku deploy:master`.
   Initial import of CRAN packages `heroku run cran:import`.
 
